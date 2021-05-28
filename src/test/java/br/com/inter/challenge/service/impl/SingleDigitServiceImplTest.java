@@ -1,5 +1,6 @@
 package br.com.inter.challenge.service.impl;
 
+import br.com.inter.challenge.cache.GenericCache;
 import br.com.inter.challenge.domain.SingleDigit;
 import br.com.inter.challenge.domain.User;
 import br.com.inter.challenge.dto.SingleDigitDTO;
@@ -34,6 +35,8 @@ class SingleDigitServiceImplTest {
 
     @MockBean
     private UserRepository userRepositoryMock;
+
+    private GenericCache<String, SingleDigit> cache;
 
     @BeforeEach
     void setUp() {

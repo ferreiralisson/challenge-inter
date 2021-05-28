@@ -1,5 +1,6 @@
 package br.com.inter.challenge.service.impl;
 
+import br.com.inter.challenge.cache.GenericCache;
 import br.com.inter.challenge.domain.SingleDigit;
 import br.com.inter.challenge.domain.User;
 import br.com.inter.challenge.dto.SingleDigitDTO;
@@ -23,13 +24,32 @@ public class SingleDigitServiceImpl implements SingleDigitService {
     private final SingleDigitRepository singleDigitRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final GenericCache<String, SingleDigit> cache;
 
     @Override
     public SingleDigitDTO create(SingleDigitDTO singleDigitDTO) {
+        Optional<SingleDigit> singleDigitOptional = cache.get(singleDigitDTO.getNumberRepresentation());
+        Integer calculatedRepresentation = 0;
 
-        Integer calculatedRepresentation = calculateSingleDigit(singleDigitDTO.getNumberRepresentation(), singleDigitDTO.getNumberOfRepetitions());
-        singleDigitDTO.setResult(calculatedRepresentation);
+        if (singleDigitOptional.isPresent() && singleDigitOptional.get().getNumberOfRepetitions().compareTo(singleDigitDTO.getNumberOfRepetitions()) == 0) {
+            singleDigitDTO.setResult(calculatedRepresentation);
+        } else {
+            calculatedRepresentation = calculateSingleDigit(singleDigitDTO.getNumberRepresentation(), singleDigitDTO.getNumberOfRepetitions());
+            singleDigitDTO.setResult(calculatedRepresentation);
+        }
 
+        saveUser(singleDigitDTO);
+
+        SingleDigit singleDigit = modelMapper.map(singleDigitDTO, SingleDigit.class);
+
+        SingleDigit singleDigitSaved = singleDigitRepository.save(singleDigit);
+
+        cache.put(singleDigitSaved.getNumberRepresentation(), singleDigitSaved);
+
+        return modelMapper.map(singleDigitSaved, SingleDigitDTO.class);
+    }
+
+    private void saveUser(SingleDigitDTO singleDigitDTO) {
         if (singleDigitDTO.getIdUser() != null) {
             Optional<User> user = userRepository.findById(singleDigitDTO.getIdUser());
             if (user.isPresent()) {
@@ -40,12 +60,6 @@ public class SingleDigitServiceImpl implements SingleDigitService {
                 userRepository.save(user.get());
             }
         }
-
-        SingleDigit singleDigit = modelMapper.map(singleDigitDTO, SingleDigit.class);
-
-        SingleDigit singleDigitSaved = singleDigitRepository.save(singleDigit);
-
-        return modelMapper.map(singleDigitSaved, SingleDigitDTO.class);
     }
 
     private Integer calculateSingleDigit(String n, Integer k) {

@@ -14,3 +14,5 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
 server:
   port: 9000
+app:
+  cache-max-size: 11
