@@ -12,14 +12,6 @@ public class UserCreator {
                 .build();
     }
 
-    public static User createUserValid(){
-        return User.builder()
-                .id(1L)
-                .name("alisson")
-                .email("email@example.com")
-                .build();
-    }
-
     public static UserDTO createUserDtoValid(){
         return UserDTO.builder()
                 .id(1L)
@@ -41,6 +33,14 @@ public class UserCreator {
                 .id(1L)
                 .name("alisson2")
                 .email("email2@example.com")
+                .build();
+    }
+
+    public static User createUserValid(){
+        return User.builder()
+                .id(1L)
+                .name("alisson")
+                .email("email@example.com")
                 .build();
     }
 }

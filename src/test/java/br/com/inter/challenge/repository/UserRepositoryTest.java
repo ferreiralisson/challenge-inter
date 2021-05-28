@@ -65,7 +65,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    @DisplayName("Save throw ConstraintViolationException when userDTO is empty")
+    @DisplayName("Save throw ConstraintViolationException when user is empty")
     void save_ThrowsConstraintViolationException_WhenUserIsEmpty() {
         User user = new User();
         assertThatExceptionOfType(ConstraintViolationException.class)

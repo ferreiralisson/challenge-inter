@@ -7,7 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -24,17 +27,21 @@ public class SingleDigit {
     @Column(name = "id")
     private Long id;
 
+    @NotNull(message = "number of representation cannot be null")
     @Column(name = "number_representation")
+    @Pattern(regexp="[0-9]+",message="The informed representation must contain only integers between 1 and 10,000.00")
     private String numberRepresentation;
 
-    @NotNull
+    @NotNull(message = "number of repetitions cannot be null")
     @Column(name = "number_repetitions")
-    private String numberOfRepetitions;
+    @Min(value = 1, message = "number of repetitions cannot be less than 1")
+    @Max(value = 1000000, message = "number of repetitions cannot exceed 1000000")
+    private Integer numberOfRepetitions;
 
     @Column(name = "result")
     private Integer result;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     @JsonBackReference
     private User user;

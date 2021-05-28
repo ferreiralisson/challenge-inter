@@ -16,7 +16,7 @@ public class UserToUserDtoConverter implements Converter<User, UserDTO> {
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .singleDigitList(user.getSingleDigitList())
+                .singleDigitList(user.getSingleDigitList() != null ? user.getSingleDigitList() : null)
                 .build();
     }
 }

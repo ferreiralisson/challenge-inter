@@ -36,7 +36,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<Page<User>> listAll(Pageable pageable){
-        log.info("complete list of users in userService.listAll, start -  {}", localDateTimeToString(now()));
+        log.info("complete list of users in userService.findAll, start -  {}", localDateTimeToString(now()));
         Page<User> user = userService.findAll(pageable);
         log.info(RESPONSE_USER, localDateTimeToString(now()));
         return new ResponseEntity<>(user, OK);

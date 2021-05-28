@@ -36,7 +36,7 @@ public class User {
     @Email(message = "Email must be valid in the following format: email@example.com")
     private String email;
 
-    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     private List<SingleDigit> singleDigitList;
 

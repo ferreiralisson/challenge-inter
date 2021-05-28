@@ -1,5 +1,7 @@
 package br.com.inter.challenge.config;
 
+import br.com.inter.challenge.converter.SingleDigitDtoToSingleDigitConverter;
+import br.com.inter.challenge.converter.SingleDigitToSingleDigitDtoConverter;
 import br.com.inter.challenge.converter.UserDtoToUserConverter;
 import br.com.inter.challenge.converter.UserToUserDtoConverter;
 import org.modelmapper.ModelMapper;
@@ -14,6 +16,8 @@ public class ModelMapperConfig {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addConverter(new UserDtoToUserConverter());
         modelMapper.addConverter(new UserToUserDtoConverter());
+        modelMapper.addConverter(new SingleDigitDtoToSingleDigitConverter());
+        modelMapper.addConverter(new SingleDigitToSingleDigitDtoConverter());
         return modelMapper;
     }
 }

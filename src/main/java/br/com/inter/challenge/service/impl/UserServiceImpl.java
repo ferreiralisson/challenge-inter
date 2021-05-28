@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> findAll(Pageable pageable) {
-        Page<User> clientsPage = userRepository.findAll(pageable);
-        return new PageImpl<>(clientsPage.stream().collect(Collectors.toUnmodifiableList()));
+        Page<User> userPage = userRepository.findAll(pageable);
+        return new PageImpl<>(userPage.stream().collect(Collectors.toUnmodifiableList()));
     }
 
     @Override
