@@ -15,4 +15,4 @@ spring:
 server:
   port: 9000
 app:
-  cache-max-size: 11
+  cache-max-size: 10

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class GenericCache<K, V> implements IGenericCache<K, V> {
 
-    public static final Long CACHE_MAX_SIZE = 11L;
+    public static final Long CACHE_MAX_SIZE = 10L;
 
     protected Map<K, CacheValue<V>> cacheValueMap;
     protected Long cacheMaxSize;
@@ -84,6 +84,7 @@ public class GenericCache<K, V> implements IGenericCache<K, V> {
 
     protected interface CacheValue<V> {
         V getValue();
+
         Long cacheMaxSize();
     }
 }
