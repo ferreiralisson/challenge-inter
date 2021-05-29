@@ -27,7 +27,5 @@ mvn test
 
 ## Documentação
 
-👤 **Alisson Ferreira**
-
 * [Swagger](http://localhost:9000/swagger-ui) - Documentação de chamadas.
 
