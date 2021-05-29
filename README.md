@@ -10,7 +10,7 @@
 
 ### 🏠 [Homepage](https://www.linkedin.com/in/alisson-ferreira-b7970b78/)
 
-## Como compilar e executar a sua aplicação
+## Como compilar e executar aplicação
 
 > Inter challenge for the selection process.
 
