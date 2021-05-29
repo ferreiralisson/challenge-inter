@@ -62,6 +62,11 @@ public class UserEncryptionServiceImpl implements UserEncryptionService {
 
     @Override
     public void encryptUser(UserEncryptionDTO userEncryptionDTO) {
+
+        if(userEncryptionDTO.getPublicKey() == null && userEncryptionDTO.getIdUser() == null){
+            throw new BadRequestException("Public key or id User Invalid");
+        }
+
         UserEncryption userEncryption = new UserEncryption();
         if (StringUtils.hasText(userEncryptionDTO.getPublicKey())) {
             userEncryption = userEncryptionRepository.findByPublicKey(userEncryptionDTO.getPublicKey());
@@ -82,6 +87,11 @@ public class UserEncryptionServiceImpl implements UserEncryptionService {
 
     @Override
     public void decryptUser(UserEncryptionDTO userEncryptionDTO) {
+
+        if(userEncryptionDTO.getPublicKey() == null && userEncryptionDTO.getIdUser() == null){
+            throw new BadRequestException("Public key or id User Invalid");
+        }
+
         UserEncryption userEncryption = new UserEncryption();
 
         if (StringUtils.hasText(userEncryptionDTO.getPublicKey())) {

@@ -35,7 +35,7 @@ public class User {
     @Size(min = 1, max = 2048)
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     private List<SingleDigit> singleDigitList;
 
