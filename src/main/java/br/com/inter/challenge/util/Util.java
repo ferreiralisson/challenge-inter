@@ -11,7 +11,6 @@ import static lombok.AccessLevel.PRIVATE;
 @Component
 @NoArgsConstructor(access = PRIVATE)
 public class Util {
-
     public static String localDateTimeToString(LocalDateTime localDateTime){
         return DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(localDateTime);
     }

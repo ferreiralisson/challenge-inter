@@ -3,7 +3,7 @@ package br.com.inter.challenge.controller;
 import br.com.inter.challenge.domain.User;
 import br.com.inter.challenge.dto.UserDTO;
 import br.com.inter.challenge.service.UserService;
-import br.com.inter.challenge.testutil.UserCreator;
+import br.com.inter.challenge.util.UserCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

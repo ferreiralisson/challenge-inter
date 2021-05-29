@@ -18,7 +18,7 @@ import static java.time.LocalDateTime.now;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping(path = API_URL_PREFIX + "/users")
+@RequestMapping(path = API_URL_PREFIX + "/user")
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {

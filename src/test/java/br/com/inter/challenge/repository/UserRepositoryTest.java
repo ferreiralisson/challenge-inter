@@ -1,7 +1,7 @@
 package br.com.inter.challenge.repository;
 
 import br.com.inter.challenge.domain.User;
-import br.com.inter.challenge.testutil.UserCreator;
+import br.com.inter.challenge.util.UserCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ class UserRepositoryTest {
 
     @Test
     @DisplayName("Save persists user when successful")
-    void save_PersistClient_WhenSuccessful(){
+    void save_PersistUser_WhenSuccessful(){
         User userToBeSaved = UserCreator.createUserToBeSaved();
         User userSaved = this.userRepository.save(userToBeSaved);
 
@@ -71,16 +71,6 @@ class UserRepositoryTest {
         assertThatExceptionOfType(ConstraintViolationException.class)
                 .isThrownBy(() -> this.userRepository.save(user))
                 .withMessageContaining("Invalid Name!");
-    }
-
-    @Test
-    @DisplayName("Save throw ConstraintViolationException when email is invalid")
-    void save_ThrowsConstraintViolationException_WhenEmailIsInvalid() {
-        User user = UserCreator.createUserToBeSaved();
-        user.setEmail("email.com");
-        assertThatExceptionOfType(ConstraintViolationException.class)
-                .isThrownBy(() -> this.userRepository.save(user))
-                .withMessageContaining("Email must be valid in the following format: email@example.com");
     }
 
     @Test

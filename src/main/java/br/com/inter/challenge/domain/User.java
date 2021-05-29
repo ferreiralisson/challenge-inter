@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -29,11 +28,11 @@ public class User {
 
     @Column(name = "name")
     @NotEmpty(message = "Invalid Name!")
-    @Size(min = 3, message = "Name must be at least 3 characters")
+    @Size(min = 3, max = 2048, message = "Name must be at least 3 characters")
     private String name;
 
     @Column(name = "email")
-    @Email(message = "Email must be valid in the following format: email@example.com")
+    @Size(min = 1, max = 2048)
     private String email;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

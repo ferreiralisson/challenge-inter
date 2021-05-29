@@ -5,6 +5,8 @@ import br.com.inter.challenge.dto.UserDTO;
 import br.com.inter.challenge.exception.BadRequestException;
 import br.com.inter.challenge.repository.UserRepository;
 import br.com.inter.challenge.service.UserService;
+import br.com.inter.challenge.util.Constants;
+import br.com.inter.challenge.util.Util;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -14,13 +16,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
+import static br.com.inter.challenge.util.Constants.USER_NOT_FOUND;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    private static final String USER_NOT_FOUND = "User not found";
 
     @Override
     public UserDTO create(UserDTO userDTO) {

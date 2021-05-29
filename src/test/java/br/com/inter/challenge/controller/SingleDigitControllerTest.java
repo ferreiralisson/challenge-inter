@@ -1,18 +1,15 @@
 package br.com.inter.challenge.controller;
 
 import br.com.inter.challenge.domain.SingleDigit;
-import br.com.inter.challenge.domain.User;
 import br.com.inter.challenge.dto.SingleDigitDTO;
 import br.com.inter.challenge.service.SingleDigitService;
-import br.com.inter.challenge.testutil.SingleDigitCreator;
-import br.com.inter.challenge.testutil.UserCreator;
+import br.com.inter.challenge.util.SingleDigitCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;

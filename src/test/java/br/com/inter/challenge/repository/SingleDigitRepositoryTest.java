@@ -2,7 +2,7 @@ package br.com.inter.challenge.repository;
 
 import br.com.inter.challenge.domain.SingleDigit;
 import br.com.inter.challenge.domain.User;
-import br.com.inter.challenge.testutil.SingleDigitCreator;
+import br.com.inter.challenge.util.SingleDigitCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

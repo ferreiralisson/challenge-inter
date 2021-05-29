@@ -81,4 +81,13 @@ class GenericCacheTest {
         assertThat(n).isEmpty();
     }
 
+    @Test
+    @DisplayName("remove cache when successful")
+    void addCache_WhenSuccessful() {
+        cache.put("n", 1);
+        cache.put("n", 1);
+        Optional<Integer> n = cache.get("n");
+        assertThat(n.stream().toArray().length).isLessThan(2);
+    }
+
 }
