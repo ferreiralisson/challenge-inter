@@ -1,6 +1,6 @@
 <h1 align="center">Bem-vindo ao meu desafio inter 👋</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-3.2.2-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://twitter.com/@ferreiralisson1">
     <img alt="Twitter: @ferreiralisson1" src="https://img.shields.io/twitter/follow/@ferreiralisson1.svg?style=social" target="_blank" />
   </a>
